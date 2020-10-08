@@ -11,11 +11,11 @@ import UIKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
 
-protocol ImageLoaderDelegate: class {
+public protocol ImageLoaderDelegate: class {
     func setImage(image: UIImage)
 }
 
-class ImageLoader {
+public class ImageLoader {
     weak var delegate: ImageLoaderDelegate?
     private var currentDataTask: URLSessionDataTask?
     

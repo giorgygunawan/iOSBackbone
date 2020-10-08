@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iOSBackbone
 
 class ViewController: UIViewController {
 

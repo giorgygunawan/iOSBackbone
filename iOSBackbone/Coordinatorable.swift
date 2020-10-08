@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol Coordinatorable: class {
+public protocol Coordinatorable: class {
     associatedtype ControllerType
     var mainNavigationController: ControllerType { get }
     func dismiss(handler: (() -> Void)?)
@@ -17,11 +17,11 @@ protocol Coordinatorable: class {
     func popToRoot()
 }
 
-protocol CoordinatorSource {
+public protocol CoordinatorSource {
     var coordinatorDelegate: CoordinatorDelegate? { get set }
 }
 
-extension Coordinatorable where ControllerType: UIViewController {
+public extension Coordinatorable where ControllerType: UIViewController {
     func dismiss(handler: (() -> Void)?) {
         mainNavigationController.dismiss(animated: true, completion: handler)
     }
@@ -35,7 +35,7 @@ extension Coordinatorable where ControllerType: UIViewController {
     }
 }
 
-extension Coordinatorable where ControllerType: UINavigationController {
+public extension Coordinatorable where ControllerType: UINavigationController {
     func dismiss(handler: (() -> Void)?) {
         mainNavigationController.dismiss(animated: true, completion: handler)
     }
@@ -51,13 +51,13 @@ extension Coordinatorable where ControllerType: UINavigationController {
 
 // MARK: - Base Coordinator
 
-protocol CoordinatorDelegate: class {
+public protocol CoordinatorDelegate: class {
     func dismissController(handler: (() -> Void)?)
     func popController()
     func popToRootController()
 }
 
-extension CoordinatorDelegate where Self: Coordinatorable {
+public extension CoordinatorDelegate where Self: Coordinatorable {
     func dismissController(handler: (() -> Void)?) {
         self.dismiss(handler: handler)
     }

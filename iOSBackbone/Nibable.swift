@@ -8,18 +8,14 @@
 
 import Foundation
 import UIKit
-extension UIView: Nibable {}
-
-extension UIViewController: Nibable {}
-
-protocol Nibable: class {
+public protocol Nibable: class {
     static func nibName() -> String
     static func nib() -> UINib
     static func identifier() -> String
     static func bundle() -> Bundle
 }
 
-extension Nibable {
+public extension Nibable {
     static func nibName() -> String {
         return identifier().components(separatedBy: ".").last!.components(separatedBy: "<").first!
     }

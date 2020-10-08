@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol NetworkTransactionDispatcherable {
+public protocol NetworkTransactionDispatcherable {
      func dispatch(format: RequestFormat, onSuccessHandler: @escaping (Data) -> Void, onErrorHandler: @escaping (Error) -> Void)
 }
 
-enum NetworkTransactionError: Swift.Error {
+public enum NetworkTransactionError: Swift.Error {
     case incorrectUrlPath
     case voidDataFound
     case other
 }
 
-struct URLSessionNetworkDispatcher: NetworkTransactionDispatcherable {
+public struct URLSessionNetworkDispatcher: NetworkTransactionDispatcherable {
     public static let shared = URLSessionNetworkDispatcher()
     weak var urlSession: URLSession?
     
